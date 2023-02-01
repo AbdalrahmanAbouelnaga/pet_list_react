@@ -154,6 +154,13 @@ const SignUp = () => {
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.3/dist/css/bulma-carousel.min.css" />
     </Helmet>
         <div className="column is-fullwidth mt-6 columns is-justify-content-center" id="addForm">
+        {images.length?<div className={"slideshow-container column is-4"}>
+
+        {showImages}
+
+        {images.length<=1?null:<><a className="prev" onClick={()=>{plusSlides(-1)}}>&#10094;</a>
+        <a className="next" onClick={()=>{plusSlides(1)}}>&#10095;</a></>}
+        </div>:<div className="column is-4"></div>}
             <form onSubmit={handleSubmit} className="column is-4">
                 <h2 className="title">Sign Up</h2>
                 <div className="field">
@@ -202,16 +209,9 @@ const SignUp = () => {
                     </div>
                 </div>
                 <hr />
-                <button className="button is-dark" type="submit">Add Pet</button>
+                <button className="button is-dark" type="submit">Sign Up</button>
 
             </form>
-            {images.length?<div className={"slideshow-container column is-4"}>
-
-        {showImages}
-
-        {images.length<=1?null:<><a className="prev" onClick={()=>{plusSlides(-1)}}>&#10094;</a>
-        <a className="next" onClick={()=>{plusSlides(1)}}>&#10095;</a></>}
-        </div>:<div className="column is-4"></div>}
             
         </div>
 
