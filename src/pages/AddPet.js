@@ -135,7 +135,8 @@ const AddPet = () => {
         form_data.append('data',JSON.stringify(data))
         console.log(form_data)
         axiosInstance.post('/add-pet/',form_data,{headers: {
-                "Content-Type": `multipart/form-data`
+                "Content-Type": `multipart/form-data`,
+                "Access-Control-Allow-Origin":"https://pet-list-react.vercel.app"
               }})
                          .then(response=>{
                             toast({
