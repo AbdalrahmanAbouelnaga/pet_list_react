@@ -190,13 +190,13 @@ const SignUp = () => {
                 <div className="field">
                     <label htmlFor="password1">Password</label>
                     <div className="control">
-                        <input required type="text" className="input" name="password1" value={password1} onChange={(e)=>{handleChange(e)}}/>
+                        <input required type="password" className="input" name="password1" value={password1} onChange={(e)=>{handleChange(e)}}/>
                     </div>
                 </div>
                 <div className="field">
                     <label htmlFor="password2">Confirm Password</label>
                     <div className="control">
-                        <input required type="text" className="input" name="password2" value={password2} onChange={(e)=>{handleChange(e)}}/>
+                        <input required type="password" className="input" name="password2" value={password2} onChange={(e)=>{handleChange(e)}}/>
                     </div>
                 </div>
                 <div className="field">
