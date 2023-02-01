@@ -2,8 +2,9 @@ import { useEffect, useState } from "react"
 import Helmet from "react-helmet"
 import axiosInstance from "../axios"
 import { toast } from "bulma-toast"
-
+import { useNavigate } from "react-router-dom"
 const SignUp = () => {
+    const navigate = useNavigate()
     const [username,setUsername] = useState('')
     const [first_name,setFirstName] = useState('')
     const [email,setEmail] = useState('')
@@ -116,13 +117,14 @@ const SignUp = () => {
               }})
                          .then(response=>{
                             toast({
-                                message:'Pet Added To List.',
+                                message:'Sign up successful',
                                 dismissible:true,
                                 pauseOnHover:true,
                                 duration:1500,
                                 type:'is-success',
                                 position:'bottom-right'
                             })
+                            navigate('/')
                          }).catch(error=>{
                             console.log(error)
                             toast({
