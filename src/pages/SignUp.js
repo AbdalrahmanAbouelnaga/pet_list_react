@@ -114,7 +114,6 @@ const SignUp = () => {
         console.log(form_data)
         axiosInstance.post('/sign-up/',form_data,{headers: {
                 "Content-Type": `multipart/form-data`,
-                "Access-Control-Allow-Origin":"https://pet-list-react.vercel.app"
               }})
                          .then(response=>{
                             toast({
