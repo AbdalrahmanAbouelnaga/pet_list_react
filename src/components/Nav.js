@@ -3,9 +3,9 @@ import { AuthContext } from "../context/AuthContext"
 import { useContext } from "react"
 import { useState } from "react"
 import axiosInstance from "../axios"
-
+import { useNavigate } from "react-router-dom"
 export function Nav() {
-
+    const navigate = useNavigate()
     const {isAuthenticated,removeToken} = useContext(AuthContext)
 
 
@@ -16,6 +16,7 @@ export function Nav() {
         axiosInstance.post('/token/logout')
              .then(response=>{
                 removeToken()
+                navigate('/')
              }).catch(error=>console.log(error))
     }
 

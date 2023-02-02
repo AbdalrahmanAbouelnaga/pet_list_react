@@ -122,7 +122,7 @@ const SignUp = () => {
                                 type:'is-success',
                                 position:'bottom-right'
                             })
-                            navigate('/')
+                            navigate('/login')
                          }).catch(error=>{
                             console.log(error)
                             toast({

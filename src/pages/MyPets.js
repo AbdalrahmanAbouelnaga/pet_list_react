@@ -2,8 +2,18 @@ import axiosInstance from "../axios"
 import { useState } from "react"
 import { useEffect } from "react"
 import { PetBox } from "../components/PetBox"
+import { AuthContext } from '../context/AuthContext'
+import { useContext } from 'react'
+import { useNavigate } from 'react-router-dom'
 const MyPets = () => {
     const [myPets,setMyPets] = useState([])
+    const {isAuthenticated} = useContext(AuthContext)
+    const navigate  = useNavigate()
+    useEffect(()=>{
+        if (!isAuthenticated){
+            return navigate('/login')
+        }
+    })
 
     useEffect(()=>{
       axiosInstance.get('/me')
