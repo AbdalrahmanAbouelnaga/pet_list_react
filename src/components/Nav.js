@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { AuthContext } from "../context/AuthContext"
 import { useContext } from "react"
 import { useState } from "react"
@@ -11,7 +11,7 @@ export function Nav() {
 
     const [showMobileMenu,setMobileMenu]=useState(false)
     const [showSideMenu,setSideMenu]=useState(false)
-
+    const [user,setUser] = useState({})
     function handleLogout(){
         axiosInstance.post('/token/logout')
              .then(response=>{
@@ -26,6 +26,12 @@ export function Nav() {
     function toggleSideMenu(){
       setSideMenu(!showSideMenu)
   }
+  useEffect(()=>{
+    axiosInstance.get('/me/')
+            .then(response=>{
+                setUser(response.data)
+            }).catch(error=>console.log(error))
+  })
 
     return (
     <>
@@ -53,7 +59,7 @@ export function Nav() {
                     {isAuthenticated?(
                         <>
                         <a href="/mypets" className="navbar-item column button is-black">My Pet List</a>
-                        <a href="/myaccount" className="navbar-item column button is-black">MyAccount</a>
+                        <a href={user.url} className="navbar-item column button is-black">MyAccount</a>
                         <a className="navbar-item column button is-black" onClick={handleLogout}>Logout</a>
                         </>
                     ):(

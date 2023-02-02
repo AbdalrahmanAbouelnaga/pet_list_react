@@ -6,16 +6,14 @@ const Pet = () => {
     const [pet,setPet] = useState({})
     useEffect(()=>{
         axiosInstance.get(window.location.pathname)
-                     .then(response=>setPet(response.data))
+                     .then(response=>{
+                        setPet(response.data)
+                        console.log(pet)
+                    })
                      .catch(error=>console.log(error))
     },[])
 
-        const showImages = pet.images?pet.images.map((image,index) => (
-        <div key={index} className="mySlides fade" style={index<1?{display:"block"}:{}}>
-            <div className="numbertext">{index}/{pet.images.length}</div>
-            <img src={image.image} style={{width:"100%",}} />
-        </div>
-        )):null
+
 
 
         let slideIndex = 1;
@@ -39,10 +37,17 @@ const Pet = () => {
           } 
 
   return (
-    <div className="column is-10 is-offset-1 columns is-multiline box">
+    <>
+    {pet.id!==undefined?
+        <div className="column is-10 is-offset-1 columns is-multiline box">
         <div className={"slideshow-container column is-half"}>
 
-            {pet.images?showImages:null}
+        {pet.images?pet.images.map((image,index) => (
+            <div key={index} className="mySlides fade" style={index<1?{display:"block"}:{}}>
+                <div className="numbertext">{index}/{pet.images.length}</div>
+                <img src={image.image} style={{width:"100%",}} />
+            </div>
+            )):null}
 
             <a className="prev" onClick={()=>{plusSlides(-1)}}>&#10094;</a>
             <a className="next" onClick={()=>{plusSlides(1)}}>&#10095;</a>
@@ -56,7 +61,8 @@ const Pet = () => {
             <h2 className="subtitle">kind: {pet.kind}</h2>
             <h2 className="subtitle">Breed: {pet.breed}</h2>
         </div>
-    </div>
+    </div>:null}
+    </>
   )
 }
 
