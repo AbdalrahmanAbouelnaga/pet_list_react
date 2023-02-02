@@ -52,9 +52,7 @@ export const MyAccount = () => {
                 </div>
                 <div className="column is-half mt-6">
                     <h2 className="title">Username: {user.username}</h2>
-                    <a href={user.url}>
                         <h2 className="subtitle">Firstname: {user.first_name}</h2>
-                    </a>
                     <h2 className="subtitle">Last Name: {user.last_name}</h2>
         
                 </div>

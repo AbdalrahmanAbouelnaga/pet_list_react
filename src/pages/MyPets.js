@@ -27,9 +27,9 @@ const MyPets = () => {
           <div className="column is-4 is-offset-4 columns is-justify-content-flex-end">
             <a href="/add-pet" className="button is-info">Add a new pet</a>
           </div>
-          <div className="column is-fullwidth box has-background-light columns is-multiline" style={{gap:"1rem",}}>
+          {petsBoxes.length?<div className="column is-fullwidth box has-background-light columns is-multiline" style={{gap:"1rem",}}>
           {petsBoxes}
-        </div>
+        </div>:null}
         </div>
     </div>
   )
