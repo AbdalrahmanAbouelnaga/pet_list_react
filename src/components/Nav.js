@@ -48,7 +48,7 @@ export function Nav() {
             <input placeholder="Search pets and users" type="search" name="query" className="input" />
             </form>
             </div>
-            <div className="navbar-end pr-5">
+            <div className="navbar-end pr-5-md">
                 <div className="buttons custom-buttons columns is-multiline has-background-black m-0">
                     {isAuthenticated?(
                         <>
