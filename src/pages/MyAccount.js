@@ -1,10 +1,16 @@
 import React, { useEffect, useState } from 'react'
 import axiosInstance from '../axios'
-
+import { AuthContext } from '../context/AuthContext'
+import { useContext } from 'react'
+import { useNavigate } from 'react-router-dom'
 export const MyAccount = () => {
     const [user,setUser] = useState({})
-
+    const {isAuthenticated} = useContext(AuthContext)
+    const navigate  = useNavigate()
     useEffect(()=>{
+        if (!isAuthenticated){
+            return navigate('/login')
+        }
         axiosInstance.get('/me')
             .then(response=>{
                 axiosInstance.get(response.data.url)

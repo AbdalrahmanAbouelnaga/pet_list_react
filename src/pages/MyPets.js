@@ -9,13 +9,11 @@ const MyPets = () => {
     const [myPets,setMyPets] = useState([])
     const {isAuthenticated} = useContext(AuthContext)
     const navigate  = useNavigate()
-    useEffect(()=>{
-        if (!isAuthenticated){
-            return navigate('/login')
-        }
-    })
 
     useEffect(()=>{
+      if (!isAuthenticated){
+        return navigate('/login')
+    }
       axiosInstance.get('/me')
           .then(response=>{
               axiosInstance.get(`${response.data.url}pets/`)
