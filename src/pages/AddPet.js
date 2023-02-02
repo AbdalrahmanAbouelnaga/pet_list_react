@@ -133,10 +133,8 @@ const AddPet = () => {
         const data = {
                 name,
                 birth_date:birthDate,
-                kind_new: (kind === 'addNewKind')?true:false,
-                breed_new: (breed === 'addNewBreed')?true:false,
-                breed:(breed === 'addNewBreed')?newBreed:breed,
-                kind: (kind === 'addNewKind')?newKind:kind.id,
+                breed:breed,
+                kind:kind.id,
             }
         let form_data = new FormData()
         images.forEach(image=>form_data.append('images[]',image,image.name))
