@@ -26,12 +26,6 @@ export function Nav() {
     function toggleSideMenu(){
       setSideMenu(!showSideMenu)
   }
-  useEffect(()=>{
-    axiosInstance.get('/me/')
-            .then(response=>{
-                setUser(response.data)
-            }).catch(error=>console.log(error))
-  })
 
     return (
     <>
@@ -59,7 +53,7 @@ export function Nav() {
                     {isAuthenticated?(
                         <>
                         <a href="/mypets" className="navbar-item column button is-black">My Pet List</a>
-                        <a href={user.url} className="navbar-item column button is-black">MyAccount</a>
+                        <a href="/myaccount" className="navbar-item column button is-black">MyAccount</a>
                         <a className="navbar-item column button is-black" onClick={handleLogout}>Logout</a>
                         </>
                     ):(

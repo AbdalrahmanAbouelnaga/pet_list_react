@@ -18,6 +18,7 @@ import AddPet from './pages/AddPet';
 import Search from './pages/Search';
 import SignUp from './pages/SignUp';
 import User from './pages/User';
+import MyAccount from './pages/MyAccount';
 
 
 
@@ -53,6 +54,10 @@ const routes = [
   {
     path:'/users/:slug',
     element:<User />
+  },
+  {
+    path:'/myaccount',
+    element:<MyAccount />
   }
 ]
 

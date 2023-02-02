@@ -6,11 +6,14 @@ const MyPets = () => {
     const [myPets,setMyPets] = useState([])
 
     useEffect(()=>{
-        axiosInstance.get('/mypets')
-             .then(response=>{
-                setMyPets(response.data)
-             }).catch(error=>console.log(error))
-    },[])
+      axiosInstance.get('/me')
+          .then(response=>{
+              axiosInstance.get(`${response.data.url}pets/`)
+                  .then(res=>setMyPets(res.data))
+                  .catch(error=>console.log(error))
+          }).catch(error=>console.log(error))
+
+      },[])
 
     const petsBoxes = myPets.map(pet=><PetBox pet={pet} key={pet.id} />)
     // useEffect(()=>{
@@ -24,7 +27,7 @@ const MyPets = () => {
           <div className="column is-4 is-offset-4 columns is-justify-content-flex-end">
             <a href="/add-pet" className="button is-info">Add a new pet</a>
           </div>
-          <div className="column is-fullwidth box has-background-light columns is-multiline">
+          <div className="column is-fullwidth box has-background-light columns is-multiline" style={{gap:"1rem",}}>
           {petsBoxes}
         </div>
         </div>

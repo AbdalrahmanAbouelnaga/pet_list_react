@@ -39,7 +39,7 @@ const User = () => {
           } 
 
   return (
-    <div className="column is-10 is-offset-1 columns is-multiline box">
+    <div className="column is-10 is-offset-1 columns is-multiline box mt-6">
         <div className={"slideshow-container column is-half"}>
 
             {user.images?showImages:null}
