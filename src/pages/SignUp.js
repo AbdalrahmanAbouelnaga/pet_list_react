@@ -112,9 +112,7 @@ const SignUp = () => {
             form_data.append(key,data[key])
         }
         console.log(form_data)
-        axiosInstance.post('/users/',form_data,{headers: {
-                "Content-Type": `multipart/form-data`,
-              }})
+        axiosInstance.post('/users/',form_data)
                          .then(response=>{
                             toast({
                                 message:'Sign up successful',
