@@ -15,6 +15,16 @@ const AddPet = () => {
     const [newKind,setNewKind] = useState('')
     const [newBreed,setNewBreed] = useState('')
 
+    const [url,setURL] = useState('')
+
+    useEffect(()=>{
+        axiosInstance.get('/me')
+            .then(response=>setURL(response.data.url))
+            .catch(error=>console.log(error))
+    })
+
+
+
     useEffect(() => {
         axiosInstance.get('/kinds/')
                      .then(response=>setKinds(response.data))
@@ -129,12 +139,12 @@ const AddPet = () => {
                 kind: (kind === 'addNewKind')?newKind:kind.id,
             }
         let form_data = new FormData()
-        images.forEach(image => {
-            form_data.append(image.name,image);
-        });
-        form_data.append('data',JSON.stringify(data))
+        images.forEach(image=>form_data.append('images[]',image,image.name))
+        for (const key in data){
+            form_data.append(key,data[key])
+        }
         console.log(form_data)
-        axiosInstance.post('/add-pet/',form_data,{headers: {
+        axiosInstance.post(`${url}pets/`,form_data,{headers: {
                 "Content-Type": `multipart/form-data`,
               }})
                          .then(response=>{

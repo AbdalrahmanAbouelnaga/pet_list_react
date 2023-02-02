@@ -2,7 +2,7 @@ import axios from "axios";
 
 
 const axiosInstance = axios.create({
-    baseURL: 'https://django-server-production-067b.up.railway.app/'
+    baseURL: process.env.BACKEND_URL
 })
 
 

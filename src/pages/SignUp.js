@@ -107,12 +107,12 @@ const SignUp = () => {
                 password:password1,
             }
         let form_data = new FormData()
-        images.forEach(image => {
-            form_data.append(image.name,image);
-        });
-        form_data.append('data',JSON.stringify(data))
+        images.forEach(image=>form_data.append('images[]',image,image.name))
+        for (const key in data){
+            form_data.append(key,data[key])
+        }
         console.log(form_data)
-        axiosInstance.post('/sign-up/',form_data,{headers: {
+        axiosInstance.post('/users/',form_data,{headers: {
                 "Content-Type": `multipart/form-data`,
               }})
                          .then(response=>{

@@ -1,4 +1,4 @@
-import { useContext } from "react"
+import { useContext, useEffect } from "react"
 import { AuthContext } from "../context/AuthContext"
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
@@ -10,6 +10,7 @@ const Login = ()=>{
     const {setToken}=useContext(AuthContext)
     const [username,setUsername] = useState('')
     const [password,setPassword] = useState('')
+
 
     function handleChange(e){
         const {name,value} = e.target
