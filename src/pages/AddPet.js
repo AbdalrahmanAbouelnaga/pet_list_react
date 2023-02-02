@@ -134,7 +134,7 @@ const AddPet = () => {
                 name,
                 birth_date:birthDate,
                 breed:(breed === 'addNewBreed')?newBreed:breed,
-                kind: (kind === 'addNewKind')?newKind:kind.id,
+                kind: (kind === 'addNewKind')?newKind:kind,
             }
         let form_data = new FormData()
         images.forEach(image=>form_data.append('images[]',image,image.name))
@@ -186,7 +186,7 @@ const AddPet = () => {
                     <div className="select is-fullwidth">
                         <select required name="kind" id="kind" value={kind.id} onChange={e=>{handleChange(e)}}>
                             <option value=''>Select Kind</option>
-                            {kinds.map(k=><option key={k.id} value={k.id}>{k.name}</option>)}
+                            {kinds.map(k=><option key={k.id} value={k.name}>{k.name}</option>)}
                             <option value={1}>Add a new Kind</option>
                         </select>
                     </div>
@@ -198,7 +198,7 @@ const AddPet = () => {
                     {kind!=='addNewKind'?<><div className="select is-fullwidth">
                         <select required name="breed" id="breed" value={breed} onChange={e=>{handleChange(e)}}>
                             <option value=''>Select Breed</option>
-                            {breedOptions.length?breedOptions.map((b)=><option key={b.id} value={b.id}>{b.name}</option>):null}
+                            {breedOptions.length?breedOptions.map((b)=><option key={b.id} value={b.name}>{b.name}</option>):null}
                             <option value={1}>Add a new Breed</option>
                         </select>
                     </div>{breed!=='addNewBreed'?null:<div className="control">
